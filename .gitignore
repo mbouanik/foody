@@ -1,0 +1,24 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/foody-frontend/node_modules
+/foody-backend/node_modules
+/foody-frontend/.pnp
+/foody-frontend/.pnp.js
+
+# testing
+/foody-frontend/coverage
+
+# production
+/foody-frontend/build
+
+# misc
+/foody-frontend/.DS_Store
+/foody-frontend/.env.local
+/foody-frontend/.env.development.local
+/foody-frontend/.env.test.local
+/foody-frontend/.env.production.local
+
+/foody-frontend/npm-debug.log*
+/foody-frontend/yarn-debug.log*
+/foody-frontend/yarn-error.log*

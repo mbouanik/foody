@@ -1,0 +1,11 @@
+.FoodList-display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-bottom: 2rem;
+}
