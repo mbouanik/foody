@@ -63,7 +63,10 @@ const FoodCard = ({ food, added }) => {
   };
   return (
     <>
-      <Card className="FoodCard-display" style={{ width: "25rem" }}>
+      <Card
+        className="FoodCard-display"
+        style={{ width: "25rem", minWidth: "20rem" }}
+      >
         <Card.Img variant="top" src={food.image} />
         <Card.Body>
           <Card.Title>{food.title || food.label}</Card.Title>

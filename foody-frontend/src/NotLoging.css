@@ -1,0 +1,29 @@
+.NotLogin-display {
+  background-image: url("../public/img/pexels-ella-olsson-1640777.jpg");
+  object-fit: fit;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.NotLogin-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 5rem;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.NotLogin-bg {
+  padding: 1rem;
+  background-color: rgb(255, 255, 255, 0.6);
+}

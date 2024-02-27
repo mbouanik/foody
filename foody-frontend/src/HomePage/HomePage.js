@@ -68,9 +68,9 @@ const HomePage = () => {
   return (
     <>
       {isAuthenticated ? (
-        <>
+        <div>
           <FoodList foods={foods} />
-        </>
+        </div>
       ) : (
         <div>
           <NotLogin />{" "}

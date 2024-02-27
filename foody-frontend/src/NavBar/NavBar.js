@@ -60,7 +60,14 @@ const NavBar = () => {
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="">
-                  <NavLink to="/exercises"> Exercises </NavLink>
+                  <NavLink
+                    className="secondary"
+                    style={{ textDecoration: "none", color: "grey" }}
+                    to="/exercises"
+                  >
+                    {" "}
+                    Exercises{" "}
+                  </NavLink>
                 </Nav.Link>
               </>
             ) : (
