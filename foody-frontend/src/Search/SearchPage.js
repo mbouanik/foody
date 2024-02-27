@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import FoodList from "./FoodList";
-import SearchForm from "./SearchForm";
+import FoodList from "../Food/FoodList";
+import SearchForm from "../Search/SearchForm";
 
 const SearchPage = () => {
   const [foods, setFoods] = useState([]);

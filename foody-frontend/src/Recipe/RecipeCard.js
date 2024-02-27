@@ -2,7 +2,7 @@ import HTMLReactParser from "html-react-parser";
 import React from "react";
 import Card from "react-bootstrap/Card";
 import parse from "html-react-parser";
-import Loading from "./Loading";
+import Loading from "../Loading";
 import "./RecipeCard.css";
 
 const RecipeCard = ({ recipe }) => {

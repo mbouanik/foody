@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import ExerciseCard from "./ExerciseCard";
-import SearchFormExercise from "./SearchFormExercise";
-import SearchFormExerciseByMuscle from "./SearchFormExerciseByMuscle";
+import ExerciseList from "./ExerciseList";
+import SearchFormExercise from "../Search/SearchFormExercise";
+import SearchFormExerciseByMuscle from "../Search/SearchFormExerciseByMuscle";
 
 const ExercisePage = () => {
   console.log(process.env);
@@ -39,10 +40,11 @@ const ExercisePage = () => {
     const headers = {
       "X-Api-Key": process.env.REACT_APP_API_NINJA,
     };
-    const { query, type } = data;
-    console.log(query, type);
+    const { query, type, difficulty } = data;
+    console.log(data);
+    console.log(query, type, difficulty);
     const res = await axios.get(
-      `https://api.api-ninjas.com/v1/exercises?${type}=${query}`,
+      `https://api.api-ninjas.com/v1/exercises?${type}=${query}&difficulty=${difficulty}`,
       {
         headers,
       },
@@ -53,23 +55,11 @@ const ExercisePage = () => {
 
   return (
     <>
-      <h1> EXERCISES </h1>
       <SearchFormExercise searchExercise={searchExercise} />
       <SearchFormExerciseByMuscle
         searchExercieByMuscle={searchExercieByMuscle}
       />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          gap: "1rem",
-        }}
-      >
-        {exercises.map((exercise) => (
-          <ExerciseCard key={exercise.tag_id} exercise={exercise} />
-        ))}
-      </div>
+      <ExerciseList exercises={exercises} />
     </>
   );
 };

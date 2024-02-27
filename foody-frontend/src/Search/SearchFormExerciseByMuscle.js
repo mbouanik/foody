@@ -5,6 +5,7 @@ const SearchFormExerciseByMuscle = ({ searchExercieByMuscle }) => {
   const [formData, setFormData] = useState({
     query: "",
     type: "",
+    difficulty: "",
   });
   const [placeholder, setPlaceholder] = useState("");
   const [options, setOptions] = useState({
@@ -68,7 +69,28 @@ const SearchFormExerciseByMuscle = ({ searchExercieByMuscle }) => {
         placeholder={placeholder}
         disabled={!placeholder}
       />
-      <Button variant="success"> Submit</Button>
+      <Form.Check
+        onChange={handleChange}
+        type="radio"
+        label="beginner"
+        name="difficulty"
+        value="beginner"
+      />
+      <Form.Check
+        onChange={handleChange}
+        type="radio"
+        label="intermediate"
+        name="difficulty"
+        value="intermediate"
+      />
+      <Form.Check
+        onChange={handleChange}
+        type="radio"
+        label="expert"
+        name="difficulty"
+        value="expert"
+      />
+      <button className="btn btn-success"> Submit</button>
     </Form>
   );
 };

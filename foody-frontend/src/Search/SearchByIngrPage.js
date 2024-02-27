@@ -1,12 +1,12 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import FoodList from "./FoodList";
-import Loading from "./Loading";
-import LoginButton from "./LoginButton";
-import NotLogin from "./NotLogin";
-import SearchFormByIng from "./SearchFromByIng";
-import "./SearchByIngrPage.css";
+import FoodList from "../Food/FoodList";
+import Loading from "../Loading";
+import LoginButton from "../LoginButton";
+import NotLogin from "../NotLogin";
+import SearchFormByIng from "../Search/SearchFromByIng";
+import "../Search/SearchByIngrPage.css";
 
 const SearchByIngrPage = () => {
   const { isAuthenticated, user, isLoading } = useAuth0();
@@ -22,9 +22,18 @@ const SearchByIngrPage = () => {
       "https://api.spoonacular.com/recipes/findByIngredients",
       { params },
     );
-    console.log(res);
+    const ids = res.data.map((recipe) => recipe.id).join(",");
+    params.ids = ids;
+    const recipeInfo = await axios.get(
+      "https://api.spoonacular.com/recipes/informationBulk",
+      {
+        params,
+      },
+    );
+    console.log(ids);
+    console.log(recipeInfo.data);
     console.log(res.data);
-    setFoods(res.data);
+    setFoods(recipeInfo.data);
   };
 
   // const searchByIngr = async (data) => {

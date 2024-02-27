@@ -15,10 +15,20 @@ calories INTEGER NOT NULL,
 carbs VARCHAR(10) NOT NULL,
 fat VARCHAR(10) NOT NULL,
 protein VARCHAR(10) NOT NULL,
-image TEXT DEFAULT "https://st.depositphotos.com/1169330/3838/i/450/depositphotos_38389483-stock-photo-recipe-book.jpg",
+image VARCHAR(255) NOT NULL,
 id INTEGER NOT NULL
 );
 
+CREATE TABLE exercises (
+    id SERIAL PRIMARY KEY,
+    user_id VARCHAR(50) REFERENCES users(id) ON DELETE CASCADE NOT NULL,
+    name  VARCHAR(50) NOT NULL,
+    difficulty  VARCHAR(50) NOT NULL,
+    type  VARCHAR(50) NOT NULL,
+    equipment  VARCHAR(50) NOT NULL,
+    muscle  VARCHAR(50) NOT NULL,
+    instructions TEXT NOT NULL
+)
 -- CREATE TABLE plates (
 --   name VARCHAR(25) REFERENCES ingredients(name) ON DELETE CASCADE,
 --   meal_id INTEGER REFERENCES meals(id) ON DELETE CASCADE,

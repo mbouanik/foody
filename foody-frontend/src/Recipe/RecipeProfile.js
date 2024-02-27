@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import FoodyApi from "./api";
-import SearchForm from "./SearchForm";
-import FoodList from "./FoodList";
+import FoodyApi from "../api";
+import SearchForm from "../Search/SearchForm";
+import FoodList from "../Food/FoodList";
 import axios from "axios";
-import UserContext from "./UserContext";
-import Loading from "./Loading";
+import UserContext from "../UserContext";
+import Loading from "../Loading";
 
-const Profile = () => {
+const RecipeProfile = () => {
   const { currentUser, mealsIds } = useContext(UserContext);
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [foods, setFoods] = useState([]);
@@ -29,4 +29,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default RecipeProfile;

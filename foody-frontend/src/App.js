@@ -3,40 +3,45 @@ import { useEffect, useState } from "react";
 import FoodyApi from "./api";
 import { useAuth0 } from "@auth0/auth0-react";
 import RouterList from "./RouterList";
-import Navbar from "./NavBar";
+import Navbar from "./NavBar/NavBar";
 import UserContext from "./UserContext";
 import useLocalStorage from "./hooks/useLocalStorage";
 import axios from "axios";
+import Loading from "./Loading";
 
 function App() {
   const TOKEN_STORAGE = "foody-token";
 
   const [currentUser, setCurrentUser] = useState(null);
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, isLoading } = useAuth0();
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE);
-  const [mealsIds, setMealsIds] = useState(new Set());
+  // const [mealsIds, setMealsIds] = useState(new Set());
+  // const [exercisesIds, setExercisesIds] = useState(new Set());
 
   useEffect(() => {
     const getCurrentUser = async () => {
-      if (token) {
-        // FoodyApi.token = user.sub;
-        // setToken(user.sub);
-        const res = await FoodyApi.checkUser(token);
-        console.log(res.data.user);
-        setCurrentUser(res.data.user);
-        if (currentUser) {
-          setMealsIds(new Set(currentUser.meals.map((meal) => meal.id)));
-        }
-        console.log(mealsIds);
-        // setmealsId(new Set(res.data.user.meals.map((meal) => meal.spoon_id)));
-        // console.log(mealsId);
+      const res = token
+        ? await FoodyApi.getCurrentUser(token)
+        : await checkUser(user.sub);
 
-        // setCurrentUser(await FoodyApi.getCurrentUser(sub));
-      }
+      setCurrentUser(res.data.user);
+      // if (currentUser) {
+      //   console.log(` jjjjjj${currentUser} `);
+      //   setMealsIds(new Set(currentUser.meals.map((meal) => meal.id)));
+      //   setExercisesIds(
+      //     new Set(currentUser.exercises.map((exercise) => exercise.name)),
+      //   );
+      // }
     };
-    getCurrentUser();
-    // console.log(currentUser);
+    if (isAuthenticated) {
+      getCurrentUser();
+    }
   }, [isAuthenticated, token]);
+
+  const checkUser = async (id) => {
+    setToken(id);
+    return await FoodyApi.checkUser(id);
+  };
 
   const getRecipeInformation = async (id) => {
     const params = {
@@ -74,9 +79,29 @@ function App() {
     const res = await FoodyApi.removeMeal(id);
     return res;
   };
+
+  const addExercise = async (data) => {
+    console.log(data);
+    // currentUser.exercises.push(data);
+    const res = await FoodyApi.addExercise(data);
+    return res;
+  };
+  const removeExercise = async (data) => {
+    console.log(data);
+    // currentUser.exercises.push(data);
+    const res = await FoodyApi.removeExercise(data);
+    return res;
+  };
   return (
     <UserContext.Provider
-      value={{ currentUser, addMeal, mealsIds, removeMeal, setMealsIds }}
+      value={{
+        currentUser,
+        addMeal,
+        removeMeal,
+        addExercise,
+        removeExercise,
+        setToken,
+      }}
     >
       <div className="App">
         <Navbar />

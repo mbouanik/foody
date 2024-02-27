@@ -1,19 +1,21 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0, User } from "@auth0/auth0-react";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import FoodList from "./FoodList";
-import Loading from "./Loading";
-import LoginButton from "./LoginButton";
-import NotLogin from "./NotLogin";
-import SearchFormByIng from "./SearchFromByIng";
+import React, { useState, useEffect, useContext } from "react";
+import FoodList from "../Food/FoodList";
+import Loading from "../Loading";
+import LoginButton from "../LoginButton";
+import NotLogin from "../NotLogin";
+import SearchFormByIng from "../Search/SearchFromByIng";
+import UserContext from "../UserContext";
 import "./HomePage.css";
 const HomePage = () => {
   const { isAuthenticated, user, isLoading } = useAuth0();
   const [foods, setFoods] = useState([]);
+  const { currentUsser } = useContext(UserContext);
 
   useEffect(() => {
     const getRandomRecipes = async (data) => {
-      console.log(data);
+      // console.log(data);
       const params = {
         apiKey: process.env.REACT_APP_API_KEY,
         number: 10,
@@ -24,12 +26,13 @@ const HomePage = () => {
           params,
         },
       );
-      console.log(res);
-      console.log(res.data);
+      // console.log(res);
+      // console.log(res.data);
       setFoods(res.data.recipes);
     };
     getRandomRecipes();
-  }, []);
+  }, [currentUsser]);
+  console.log(currentUsser);
   // const searchByIngr = async (data) => {
   //   const params = {
   //     type: "public",
@@ -66,8 +69,6 @@ const HomePage = () => {
     <>
       {isAuthenticated ? (
         <>
-          <h1> Random recipe for you {user.nickname} </h1>
-          <div></div>
           <FoodList foods={foods} />
         </>
       ) : (

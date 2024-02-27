@@ -1,6 +1,7 @@
 const express = require("express");
 const { BadRequestError } = require("../expressError");
 const Meal = require("../modeles/meal");
+const { ensureLoggedIn } = require("../middleware/auth");
 
 const router = express.Router();
 

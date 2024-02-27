@@ -19,8 +19,11 @@ class FoodyApi {
     }
   }
 
-  static async getCurrentUser() {
-    let res = await axios.get(`${BASE_URL}/auth/profile`);
+  static async getCurrentUser(id) {
+    console.log(id);
+    const data = { id };
+    console.log(data);
+    const res = await axios.get(`${BASE_URL}/auth/get-user/${id}`, data);
     console.log(res);
     return res;
   }
@@ -41,6 +44,19 @@ class FoodyApi {
     const data = { id: id };
     console.log(data);
     let res = await axios.post(`${BASE_URL}/meals/remove-meal`, data);
+  }
+
+  static async addExercise(data) {
+    console.log(data);
+
+    const res = await axios.post(`${BASE_URL}/exercises/add-exercise`, data);
+    return res;
+  }
+  static async removeExercise(data) {
+    console.log(data);
+
+    const res = await axios.post(`${BASE_URL}/exercises/remove-exercise`, data);
+    return res;
   }
 }
 export default FoodyApi;

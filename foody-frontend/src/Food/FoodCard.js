@@ -3,28 +3,34 @@ import parse from "html-react-parser";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import UserContext from "./UserContext";
+import UserContext from "../UserContext";
 
-const FoodCard = ({ food }) => {
-  const { currentUser, addMeal, mealsIds, removeMeal, setMealsIds } =
-    useContext(UserContext);
+const FoodCard = ({ food, added }) => {
+  const { currentUser, addMeal, removeMeal } = useContext(UserContext);
   const [button, setButton] = useState({ color: "", text: "" });
+  const [mealsIds, setMealsIds] = useState(new Set());
   // const [mealsIds, setMealsIds] = useState(new Set());
   const { isAuthenticated } = useAuth0();
   useEffect(() => {
-    // setMealsIds(new Set(currentUser.meals.map((meal) => meal.spoon_id)));
-    mealsIds.has(food.id)
-      ? setButton({
-          color: "secondary",
-          text: "Remove",
-          handleMeal: handleRemoveMeal,
-        })
-      : setButton({
-          color: "success",
-          text: "Add",
-          handleMeal: handleAddMeal,
-        });
-  }, [currentUser, mealsIds]);
+    if (currentUser) {
+      setMealsIds(new Set(currentUser.meals.map((meal) => meal.spoon_id)));
+
+      console.log(added);
+      // mealsIds.has(food.id)
+      added
+        ? setButton({
+            color: "secondary",
+            text: "Remove",
+            handleMeal: handleRemoveMeal,
+          })
+        : setButton({
+            color: "success",
+            text: "Add",
+            handleMeal: handleAddMeal,
+          });
+    }
+  }, [currentUser]);
+
   const handleAddMeal = () => {
     const meal = {
       calories: food.calories,
@@ -69,7 +75,9 @@ const FoodCard = ({ food }) => {
               <Card.Text> Fat: {food.fat} </Card.Text>
             </>
           ) : (
-            <Card.Text>{parse(`${food.summary.slice(0, 255)}...`)}</Card.Text>
+            <Card.Text>
+              {food.summary ? parse(`${food.summary.slice(0, 255)}...`) : ""}
+            </Card.Text>
           )}
         </Card.Body>
         <Card.Footer

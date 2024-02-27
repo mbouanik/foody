@@ -35,9 +35,9 @@ const SearchFormExercise = ({ searchExercise }) => {
         value={formData.query}
         name="query"
         onChange={handleChange}
-        placeholder="Search Exercise ex: row for 20min"
+        placeholder="Search energy expenditure by Exercise ex: row for 20min"
       />
-      <Button variant="success"> Submit</Button>
+      <button className="btn btn-success"> Submit</button>
     </Form>
   );
 };
