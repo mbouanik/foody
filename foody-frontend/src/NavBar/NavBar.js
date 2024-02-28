@@ -48,7 +48,12 @@ const NavBar = ({ resetUser }) => {
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item>
-                    <Nav.Link href="/profile/recipes">Recipes</Nav.Link>
+                    <NavLink
+                      style={{ textDecoration: "none", color: "grey" }}
+                      to="/profile/recipes"
+                    >
+                      Recipes
+                    </NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <NavLink
