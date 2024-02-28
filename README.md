@@ -23,6 +23,11 @@ Foody is an application designed to help you manage your meals and exercise rout
 - Specify exercise types like cardio or strength training.
 - Customize the difficulty level from beginner to expert.
 
+## API used
+- **spoonacular API:** for food nutrients https://spoonacular.com/food-api
+- **API Ninja:** exercises tip and instruction https://api-ninjas.com/api/exercises
+- **Nutritionix:** for exercies expenditure https://developer.syndigo.com/docs/natural-language-for-exercise
+
 ## Tech Stack
 
 ### Backend
