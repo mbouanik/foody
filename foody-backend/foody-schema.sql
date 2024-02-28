@@ -4,7 +4,8 @@
 -- );
 --
 CREATE TABLE users (
-  id VARCHAR(50) PRIMARY KEY
+  id VARCHAR(50) PRIMARY KEY,
+    diet VARCHAR(255) 
     
 );
 

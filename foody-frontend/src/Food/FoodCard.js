@@ -4,8 +4,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import UserContext from "../UserContext";
+import "./FoodCard.css";
 
 const FoodCard = ({ food, added }) => {
+  const DEFAULT_IMG =
+    "https://st.depositphotos.com/1169330/3838/i/450/depositphotos_38389483-stock-photo-recipe-book.jpg";
   const { currentUser, addMeal, removeMeal } = useContext(UserContext);
   const [button, setButton] = useState({ color: "", text: "" });
   const [mealsIds, setMealsIds] = useState(new Set());
@@ -24,7 +27,7 @@ const FoodCard = ({ food, added }) => {
             handleMeal: handleRemoveMeal,
           })
         : setButton({
-            color: "success",
+            color: "outline-success",
             text: "Add",
             handleMeal: handleAddMeal,
           });
@@ -56,18 +59,15 @@ const FoodCard = ({ food, added }) => {
     console.log(food.id);
     removeMeal(food.id);
     setButton({
-      color: "success",
+      color: "outline-success",
       text: "Add",
       handleMeal: handleAddMeal,
     });
   };
   return (
     <>
-      <Card
-        className="FoodCard-display"
-        style={{ width: "25rem", minWidth: "20rem" }}
-      >
-        <Card.Img variant="top" src={food.image} />
+      <Card className="FoodCard-display">
+        <Card.Img variant="top" src={food.image || DEFAULT_IMG} />
         <Card.Body>
           <Card.Title>{food.title || food.label}</Card.Title>
           {food.fat ? (

@@ -3,19 +3,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Button, NavLink } from "react-bootstrap";
 import UserContext from "./UserContext";
 
-const LogoutButton = () => {
+const LogoutButton = ({ resetUser }) => {
   const { logout } = useAuth0();
   const { setToken } = useContext(UserContext);
 
+  const handleLogout = () => {
+    resetUser();
+    logout({ logoutParams: { returnTo: window.location.origin } });
+  };
   return (
-    <Button
-      variant="secondary"
-      onClick={() => {
-        localStorage.clear();
-        setToken(null);
-        logout({ logoutParams: { returnTo: window.location.origin } });
-      }}
-    >
+    <Button variant="secondary" onClick={handleLogout}>
       Log Out
     </Button>
   );

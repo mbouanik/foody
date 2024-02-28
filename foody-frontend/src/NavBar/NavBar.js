@@ -9,7 +9,7 @@ import LoginButton from "../LoginButton";
 import "./NavBar.css";
 import { NavLink, Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ resetUser }) => {
   const { isAuthenticated, user } = useAuth0();
   return (
     <Navbar
@@ -40,23 +40,52 @@ const NavBar = () => {
 
             {isAuthenticated ? (
               <>
-                <NavDropdown
-                  title={` ${isAuthenticated ? user.nickname : ""} Profile`}
-                >
+                <NavDropdown title={`Profile`}>
                   <NavDropdown.Item>
-                    <NavLink to="/profile/recipes"> Recipes</NavLink>
+                    <NavLink
+                      to={`/profile/user`}
+                      style={{ textDecoration: "none", color: "grey" }}
+                    >
+                      {isAuthenticated ? user.nickname : ""}{" "}
+                    </NavLink>
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item>
+                    <NavLink
+                      style={{ textDecoration: "none", color: "grey" }}
+                      to="/profile/recipes"
+                    >
+                      {" "}
+                      Recipes
+                    </NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <NavLink to="/profile/exercises"> Exercises</NavLink>
+                    <NavLink
+                      style={{ textDecoration: "none", color: "grey" }}
+                      to="/profile/exercises"
+                    >
+                      {" "}
+                      Exercises
+                    </NavLink>
                   </NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Search By" id="basic-nav-dropdown">
                   <NavDropdown.Item className="NavBar-link">
-                    <NavLink to="/search/nutrients">Nutrients</NavLink>
+                    <NavLink
+                      style={{ textDecoration: "none", color: "grey" }}
+                      to="/search/nutrients"
+                    >
+                      Nutrients
+                    </NavLink>
                   </NavDropdown.Item>
 
                   <NavDropdown.Item>
-                    <NavLink to="/search/ingredients">Ingredients </NavLink>
+                    <NavLink
+                      style={{ textDecoration: "none", color: "grey" }}
+                      to="/search/ingredients"
+                    >
+                      Ingredients{" "}
+                    </NavLink>
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="">
@@ -75,7 +104,11 @@ const NavBar = () => {
             )}
           </Nav>
           <Nav.Link>
-            {!isAuthenticated ? <LoginButton /> : <LogoutButton />}
+            {!isAuthenticated ? (
+              <LoginButton />
+            ) : (
+              <LogoutButton resetUser={resetUser} />
+            )}
           </Nav.Link>
         </Navbar.Collapse>
       </Container>

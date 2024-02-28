@@ -11,15 +11,34 @@ import "./HomePage.css";
 const HomePage = () => {
   const { isAuthenticated, user, isLoading } = useAuth0();
   const [foods, setFoods] = useState([]);
-  const { currentUsser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
+    const exclude_tags = new Set([
+      "gluten_free",
+      "ketogenic",
+      "vegetarian",
+      "lacto_vegetarian",
+      "ovo_vegetarian",
+      "vegan",
+      "pescetarian",
+      "paleo",
+      "primal",
+      "whole30",
+    ]);
+
     const getRandomRecipes = async (data) => {
       // console.log(data);
+      currentUser.diet.split(",").map((d) => {
+        if (exclude_tags.has(d)) return exclude_tags.delete(d);
+      });
       const params = {
         apiKey: process.env.REACT_APP_API_KEY,
         number: 10,
+        "include-tags": currentUser.diet,
+        "exclude-tags": Array.from(exclude_tags).join(","),
       };
+      console.log(params);
       const res = await axios.get(
         "https://api.spoonacular.com/recipes/random",
         {
@@ -27,12 +46,14 @@ const HomePage = () => {
         },
       );
       // console.log(res);
-      // console.log(res.data);
+      console.log(res.data);
       setFoods(res.data.recipes);
     };
-    getRandomRecipes();
-  }, [currentUsser]);
-  console.log(currentUsser);
+    if (currentUser) {
+      getRandomRecipes();
+    }
+  }, [currentUser]);
+  console.log(currentUser);
   // const searchByIngr = async (data) => {
   //   const params = {
   //     type: "public",
