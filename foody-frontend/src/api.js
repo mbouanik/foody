@@ -13,7 +13,6 @@ class FoodyApi {
     const headers = { Authorization: `Bearer ${FoodyApi.token}` };
     const params = method === "get" ? data : {};
 
-    console.log(params);
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
