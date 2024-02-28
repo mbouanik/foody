@@ -10,9 +10,9 @@ const { auth } = require("express-openid-connect");
 const dotenv = require("dotenv").config();
 
 app.use(express.static(path.join(__dirname, "..", "foody-frontend", "build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
 app.use(express.json());
 app.use(cors());
 const usersRoutes = require("./routes/users");
