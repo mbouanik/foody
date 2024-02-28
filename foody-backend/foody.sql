@@ -13,6 +13,6 @@ CREATE DATABASE foody;
 
 DROP DATABASE foody_test;
 CREATE DATABASE foody_test;
-\connect jobly_test
+\connect foody_test
 
 \i foody-schema.sql

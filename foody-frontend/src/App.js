@@ -16,8 +16,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE);
-  // const [mealsIds, setMealsIds] = useState(new Set());
-  // const [exercisesIds, setExercisesIds] = useState(new Set());
 
   useEffect(() => {
     const initCurrentUser = async () => {
@@ -26,13 +24,6 @@ function App() {
         : await checkUser(user.sub);
 
       setCurrentUser(res.user);
-      // if (currentUser) {
-      //   console.log(` jjjjjj${currentUser} `);
-      //   setMealsIds(new Set(currentUser.meals.map((meal) => meal.id)));
-      //   setExercisesIds(
-      //     new Set(currentUser.exercises.map((exercise) => exercise.name)),
-      //   );
-      // }
     };
     if (isAuthenticated) {
       initCurrentUser();
@@ -87,8 +78,8 @@ function App() {
     return res;
   };
 
-  const removeMeal = async (id) => {
-    const res = await FoodyApi.removeMeal(id);
+  const removeMeal = async (data) => {
+    const res = await FoodyApi.removeMeal(data);
     return res;
   };
 

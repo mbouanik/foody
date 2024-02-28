@@ -57,7 +57,7 @@ const FoodCard = ({ food, added }) => {
   };
   const handleRemoveMeal = () => {
     console.log(food.id);
-    removeMeal(food.id);
+    removeMeal({ id: food.id, user_id: currentUser.id });
     setButton({
       color: "outline-success",
       text: "Add",

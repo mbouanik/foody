@@ -1,38 +1,27 @@
--- CREATE TABLE ingredients (
---   name VARCHAR(50) PRIMARY KEY CHECK (name = lower(name)),
---   description TEXT NOT NULL
--- );
---
 CREATE TABLE users (
-  id VARCHAR(50) PRIMARY KEY,
-    diet VARCHAR(255) 
-    
+    id VARCHAR(50) PRIMARY KEY,
+    diet VARCHAR(50) 
 );
 
 CREATE TABLE meals (
-user_id VARCHAR(50) REFERENCES users(id) ON DELETE CASCADE NOT NULL,
-  title TEXT NOT NULL,
-calories INTEGER NOT NULL,
-carbs VARCHAR(10) NOT NULL,
-fat VARCHAR(10) NOT NULL,
-protein VARCHAR(10) NOT NULL,
-image VARCHAR(255) NOT NULL,
-id INTEGER NOT NULL
+    user_id VARCHAR(50) REFERENCES users(id) ON DELETE CASCADE NOT NULL,
+    title VARCHAR(50),
+    calories INTEGER,
+    carbs VARCHAR(10),
+    fat VARCHAR(10),
+    protein VARCHAR(10),
+    image VARCHAR(255),
+    id INTEGER 
 );
 
 CREATE TABLE exercises (
     id SERIAL PRIMARY KEY,
     user_id VARCHAR(50) REFERENCES users(id) ON DELETE CASCADE NOT NULL,
-    name  VARCHAR(50) NOT NULL,
-    difficulty  VARCHAR(50) NOT NULL,
-    type  VARCHAR(50) NOT NULL,
-    equipment  VARCHAR(50) NOT NULL,
-    muscle  VARCHAR(50) NOT NULL,
-    instructions TEXT NOT NULL
+    name  VARCHAR(50),
+    difficulty  VARCHAR(50),
+    type  VARCHAR(50),
+    equipment  VARCHAR(50),
+    muscle  VARCHAR(50),
+    instructions TEXT
 )
--- CREATE TABLE plates (
---   name VARCHAR(25) REFERENCES ingredients(name) ON DELETE CASCADE,
---   meal_id INTEGER REFERENCES meals(id) ON DELETE CASCADE,
---   PRIMARY KEY (meal_id, name)
--- );
 

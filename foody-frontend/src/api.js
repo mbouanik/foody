@@ -53,9 +53,7 @@ class FoodyApi {
     // await axios.post(`${BASE_URL}/meals/add-meal`, data);
     return res;
   }
-  static async removeMeal(id) {
-    console.log(id);
-    const data = { id: id };
+  static async removeMeal(data) {
     console.log(data);
     let res = await this.request("meals/remove-meal", data, "post");
     // axios.post(`${BASE_URL}/meals/remove-meal`, data);

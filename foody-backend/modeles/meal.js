@@ -21,10 +21,13 @@ class Meal {
     );
     return res.rows[0];
   }
-  static async removeMeal(id) {
-    const res = await db.query(`DELETE FROM meals WHERE id= $1 RETURNING *`, [
-      id,
-    ]);
+  static async removeMeal(data) {
+    const { id, user_id } = data;
+    const res = await db.query(
+      `DELETE FROM meals WHERE id= $1 AND user_id=$2 RETURNING id , user_id`,
+      [id, user_id],
+    );
+    return res.rows[0];
   }
 }
 

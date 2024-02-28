@@ -2,7 +2,6 @@ const db = require("../db");
 
 class User {
   static async checkeUser(id) {
-    console.log(` checkeUser : ${id}`);
     const res = await db.query(`SELECT * FROM users WHERE id = $1`, [id]);
     if (res.rows.length == 0) {
       await db.query(
@@ -14,7 +13,6 @@ class User {
   }
 
   static async getCurrentUser(id) {
-    console.log(`getUser ${id}`);
     const res = await db.query(`SELECT id, diet FROM users WHERE id = $1`, [
       id,
     ]);

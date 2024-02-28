@@ -7,7 +7,6 @@ const router = express.Router();
 
 router.post("/add-meal", ensureLoggedIn, async (req, res, next) => {
   const data = req.body;
-  console.log(data);
 
   const result = await Meal.addMeal(data);
   return result;
@@ -15,9 +14,8 @@ router.post("/add-meal", ensureLoggedIn, async (req, res, next) => {
 
 router.post("/remove-meal", ensureLoggedIn, async (req, res, next) => {
   const data = req.body;
-  console.log(data);
 
-  const result = await Meal.removeMeal(data.id);
+  const result = await Meal.removeMeal(data);
   return result;
 });
 module.exports = router;
