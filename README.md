@@ -48,29 +48,29 @@ To run Foody locally, follow these steps:
 2. **Install Dependencies:**
    - Backend:
      ```bash
-     cd backend
+     cd foody-backend
      npm install
      ```
 
    - Frontend:
      ```bash
-     cd ../frontend
+     cd ../foody-frontend
      npm install
      ```
 
 3. **Set up PostgreSQL Database:**
-   - Create a new database and configure the connection in the backend foody.
+   - Create a new database called foody and configure the connection in the backend.
 
 4. **Start the Servers:**
    - Backend:
      ```bash
-     cd backend
+     cd foody-backend
      npm start
      ```
 
    - Frontend:
      ```bash
-     cd ../frontend
+     cd ../foody-frontend
      npm start
      ```
 
