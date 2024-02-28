@@ -1,11 +1,1 @@
-/* a:active { */
-/*   background-color: green; */
-/* } */
 
-.dropdown-item:a: active {
-  background-color: green;
-}
-
-.NavBar-link: a: active {
-  background-color: green;
-}
