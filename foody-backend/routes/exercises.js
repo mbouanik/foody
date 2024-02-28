@@ -5,7 +5,7 @@ const { ensureLoggedIn } = require("../middleware/auth");
 
 const router = express.Router();
 
-router.post("/add-exercise", ensureLoggedIn, async (req, res, next) => {
+router.post("/add-exercise", async (req, res, next) => {
   const data = req.body;
   const result = await Exercise.addExercise(data);
   return result;
