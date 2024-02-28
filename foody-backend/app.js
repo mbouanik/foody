@@ -1,5 +1,6 @@
 const express = require("express");
 const { requiresAuth } = require("express-openid-connect");
+const path = require("path");
 
 const app = express();
 const { authenticateJWT } = require("./middleware/auth");
@@ -7,6 +8,8 @@ const { authenticateJWT } = require("./middleware/auth");
 const cors = require("cors");
 const { auth } = require("express-openid-connect");
 const dotenv = require("dotenv").config();
+
+app.use(express.static(path.join(__dirname, "..", "foody-frontend", "build")));
 
 app.use(express.json());
 app.use(cors());

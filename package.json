@@ -1,0 +1,22 @@
+{
+  "name": "node-react-render-starter",
+  "version": "1.0.0",
+  "main": "server.js",
+  "engines": {
+    "node": "21.x"
+  },
+  "scripts": {
+    "deps:client": "cd foody-frontend && npm install",
+    "deps:server": "cd foody-backend && npm install",
+    "postinstall": "npm run deps:client && npm run deps:server",
+    "dev:server": "cd foody-backend && npm run dev",
+    "dev:client": "cd foody-frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "build:client": "cd foody-frontend && npm run build",
+    "build": "npm run build:client",
+    "start": "cd foody-backend && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
