@@ -14,7 +14,6 @@ const NavBar = ({ resetUser }) => {
   return (
     <Navbar
       bg="success"
-      // data-bs-theme="dark"
       style={{ backgroundColor: "green" }}
       expand="lg"
       className="bg-body-tertiary sticky-top"
@@ -36,8 +35,6 @@ const NavBar = ({ resetUser }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" style={{ right: 0 }}>
           <Nav className="me-auto">
-            <Nav.Link></Nav.Link>
-
             {isAuthenticated ? (
               <>
                 <NavDropdown title={`Profile`}>
@@ -51,13 +48,7 @@ const NavBar = ({ resetUser }) => {
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item>
-                    <NavLink
-                      style={{ textDecoration: "none", color: "grey" }}
-                      to="/profile/recipes"
-                    >
-                      {" "}
-                      Recipes
-                    </NavLink>
+                    <Nav.Link href="/profile/recipes">Recipes</Nav.Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <NavLink

@@ -18,7 +18,7 @@ function getDatabaseUri() {
 //
 // WJB: Evaluate in 2021 if this should be increased to 13 for non-test use
 
-console.log("Jobly Config:".green);
+console.log("Foody Config:".green);
 console.log("SECRET_KEY:".yellow, SECRET_KEY);
 console.log("PORT:".yellow, PORT.toString());
 console.log("Database:".yellow, getDatabaseUri());

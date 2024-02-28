@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import ExercisePage from "./Exercise/ExercicePage";
 import ExerciseProfile from "./Exercise/ExerciseProfile";
 import FoodList from "./Food/FoodList";
@@ -25,6 +25,7 @@ const RouterList = () => {
         <Route path="/exercises" element={<ExercisePage />} />
         <Route path={`/profile/user/`} element={<ProfileUser />} />
       </Route>
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
