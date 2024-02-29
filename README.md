@@ -7,7 +7,7 @@ Foody is an application designed to help you manage your meals and exercise rout
 <img src="./images/landingpage.png" alt="signup" style="width:400px;">
 <img src="./images/login.png" alt="signup" style="width:400px;">
 <img src="./images/home.png" alt="homepage" style="width:400px;">
-<img src="./images/savedRecipes.png" alt="profile" style="width:400px; height:260px;">
+<img src="./images/savedRecipes.png" alt="profile" style="width:400px;">
 <img src="./images/recipePage.png" alt="post" style="width:400px;">
 <img src="./images/dites.png" alt="messages" style="width:400px;">
 <img src="./images/savedExercises.png" alt="messages" style="width:400px;">
