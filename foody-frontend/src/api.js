@@ -23,39 +23,27 @@ class FoodyApi {
   }
 
   static async getCurrentUser(id) {
-    console.log(id);
     const data = { id };
-    // console.log(data);
     const res = await this.request(`auth/get-user/${id}`);
-    // await axios.post(`${BASE_URL}/auth/get-user/${id}`, data);
-    console.log(res);
     return res;
   }
   static async checkUser(id) {
-    // const res = await this.request(`auth/check-user/${id}`);
-    console.log(id);
     const res = await axios.get(`${BASE_URL}/auth/check-user/${id}`);
     return res.data;
   }
 
   static async updateProfile(data) {
-    console.log(data);
     const res = await this.request("auth/profile/update", data, "patch");
     return res;
   }
 
   static async addMeal(meal) {
-    console.log(meal);
     const data = meal;
-    console.log(data);
-    let res = await this.request("meals/add-meal", data, "post");
-    // await axios.post(`${BASE_URL}/meals/add-meal`, data);
+    const res = await this.request("meals/add-meal", data, "post");
     return res;
   }
   static async removeMeal(data) {
-    console.log(data);
-    let res = await this.request("meals/remove-meal", data, "post");
-    // axios.post(`${BASE_URL}/meals/remove-meal`, data);
+    const res = await this.request("meals/remove-meal", data, "post");
     return res;
   }
 
@@ -64,8 +52,6 @@ class FoodyApi {
     return res;
   }
   static async removeExercise(data) {
-    console.log(data);
-
     const res = await this.request("exercises/remove-exercise", data, "post");
     return res;
   }

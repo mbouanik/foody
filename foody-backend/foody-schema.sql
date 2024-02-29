@@ -21,7 +21,7 @@ CREATE TABLE exercises (
 CREATE TABLE meals (
     id INTEGER PRIMARY KEY,
     user_id VARCHAR(50) REFERENCES users(id) ON DELETE CASCADE NOT NULL,
-    title VARCHAR(50),
+    title TEXT,
     calories INTEGER,
     carbs VARCHAR(10),
     fat VARCHAR(10),

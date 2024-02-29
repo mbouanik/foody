@@ -89,10 +89,9 @@ const SearchForm = ({ searchFor }) => {
         />
         <span style={{ color: "green" }}> {formData.maxFat}</span>
       </div>
-      <Button variant="success" onClick={handleSubmit}>
-        {" "}
+      <button className="success" onClick={handleSubmit}>
         Search
-      </Button>
+      </button>
     </Form>
   );
 };

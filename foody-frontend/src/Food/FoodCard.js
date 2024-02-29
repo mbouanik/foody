@@ -12,14 +12,11 @@ const FoodCard = ({ food, added }) => {
   const { currentUser, addMeal, removeMeal } = useContext(UserContext);
   const [button, setButton] = useState({ color: "", text: "" });
   const [mealsIds, setMealsIds] = useState(new Set());
-  // const [mealsIds, setMealsIds] = useState(new Set());
   const { isAuthenticated } = useAuth0();
   useEffect(() => {
     if (currentUser) {
       setMealsIds(new Set(currentUser.meals.map((meal) => meal.spoon_id)));
 
-      console.log(added);
-      // mealsIds.has(food.id)
       added
         ? setButton({
             color: "secondary",
@@ -51,12 +48,9 @@ const FoodCard = ({ food, added }) => {
       text: "Remove",
       handleMeal: handleRemoveMeal,
     });
-    console.log(mealsIds);
     mealsIds.add(meal.id);
-    console.log(mealsIds);
   };
   const handleRemoveMeal = () => {
-    console.log(food.id);
     removeMeal({ id: food.id, user_id: currentUser.id });
     setButton({
       color: "outline-success",

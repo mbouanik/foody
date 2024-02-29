@@ -10,8 +10,6 @@ const ProfileForm = ({ userDiet }) => {
 
   useEffect(() => {
     localStorage.setItem("lastVisitedURL", window.location.pathname);
-    console.log(exclude_tags);
-    // const init = () => {
     setDiets({
       gluten_free: exclude_tags.has("gluten_free"),
       ketogenic: exclude_tags.has("ketogenic"),
@@ -24,28 +22,20 @@ const ProfileForm = ({ userDiet }) => {
       primal: exclude_tags.has("primal"),
       whole30: exclude_tags.has("whole30"),
     });
-    // };
-    // init();
   }, [currentUser]);
-  console.log(diets);
 
   const handleChange = (evt) => {
-    console.log(evt.target.name);
     setDiets((diets) => ({
       ...diets,
       [evt.target.name]: evt.target.checked,
     }));
-    // console.log(evt.target.removeAttribute("checked"));
-    console.log(diets[evt.target.name]);
   };
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    console.log(diets);
     const res = Object.keys(diets)
       .filter((k) => diets[k])
       .join(",");
-    console.log(res);
     currentUser.diet = res;
     updateProfile({ diet: res, id: currentUser.id });
   };
@@ -98,6 +88,39 @@ const ProfileForm = ({ userDiet }) => {
         name="vegan"
         label="Vegan"
         checked={diets.vegan}
+      />
+
+      <Form.Check
+        onChange={handleChange}
+        inline
+        type="checkbox"
+        name="pescetarian"
+        label="Pescetarian"
+        checked={diets.pescetarian}
+      />
+      <Form.Check
+        onChange={handleChange}
+        inline
+        type="checkbox"
+        name="paleo"
+        label="Paleo"
+        checked={diets.paleo}
+      />
+      <Form.Check
+        onChange={handleChange}
+        inline
+        type="checkbox"
+        name="primal"
+        label="Primal"
+        checked={diets.primal}
+      />
+      <Form.Check
+        onChange={handleChange}
+        inline
+        type="checkbox"
+        name="whole30"
+        label="Whole30"
+        checked={diets.whole30}
       />
 
       <button className="btn btn-success"> Save </button>

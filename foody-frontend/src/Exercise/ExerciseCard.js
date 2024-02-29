@@ -11,9 +11,6 @@ const ExerciseCard = ({ exercise, added }) => {
   );
 
   useEffect(() => {
-    // setExercisesIds(
-    //   new Set(currentUser.exercises.map((exercise) => exercise.name)),
-    // );
     added
       ? setButton({
           color: "secondary",

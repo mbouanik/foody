@@ -1,6 +1,6 @@
 const express = require("express");
 const { BadRequestError } = require("../expressError");
-const User = require("../modeles/user");
+const User = require("../models/user");
 const { createToken } = require("../helper/token");
 const router = express.Router();
 const { ensureLoggedIn } = require("../middleware/auth");

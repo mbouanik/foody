@@ -1,6 +1,6 @@
 const express = require("express");
 const { BadRequestError } = require("../expressError");
-const Exercise = require("../modeles/exercise.js");
+const Exercise = require("../models/exercise.js");
 const { ensureLoggedIn } = require("../middleware/auth");
 
 const router = express.Router();

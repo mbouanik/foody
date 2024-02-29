@@ -38,14 +38,10 @@ function App() {
     }
   }, [isAuthenticated, navigate]);
 
-  console.log(FoodyApi.token);
   const checkUser = async (id) => {
     const res = await FoodyApi.checkUser(id);
-    console.log(res.data);
     setToken(res.user.token);
-    console.log(token);
     FoodyApi.token = res.user.token;
-    console.log(res);
     return res;
   };
 
@@ -53,7 +49,6 @@ function App() {
     FoodyApi.token = token;
     const { id } = jwtDecode(token);
     const res = await FoodyApi.getCurrentUser(id);
-    console.log(res);
     return res;
   };
 
@@ -93,13 +88,10 @@ function App() {
 
   const addExercise = async (data) => {
     currentUser.exercises.push(data);
-    console.log(currentUser.exercises);
     const res = await FoodyApi.addExercise(data);
-    console.log(currentUser.exercises);
     return res;
   };
   const removeExercise = async (data) => {
-    console.log(data);
     const res = await FoodyApi.removeExercise(data);
     return res;
   };
@@ -111,7 +103,6 @@ function App() {
     setCurrentUser(null);
   };
   const updateProfile = async (data) => {
-    console.log(data);
     const res = await FoodyApi.updateProfile(data);
     return res;
   };

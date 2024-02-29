@@ -37,7 +37,7 @@ const SearchFormByIng = ({ searchByIngr }) => {
         onChange={handleChange}
         placeholder="Search recipe by ingredient ex: avocado,eggs,..."
       />
-      <Button variant="success"> Submit</Button>
+      <button className="success"> Submit</button>
     </Form>
   );
 };

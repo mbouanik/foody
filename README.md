@@ -1,7 +1,21 @@
 
 # Foody
 
-Foody is an application designed to help you manage your meals and exercise routines. Whether you want to save your favorite dishes based on diet preferences, discover recipes by typing ingredients, or plan workouts with specific nutrient ratios, Foody has you covered.
+Foody is an application designed to help you manage your meals and exercise routines. Whether you want to save your favorite dishes based on diet preferences, discover recipes by typing ingredients, or plan workouts with specific nutrient ratios, Foody has you covered [Foody](https://foody-24sx.onrender.com).
+
+<br>\
+<img src="./images/landingpage.png" alt="signup" style="width:400px;">
+<img src="./images/login.png" alt="signup" style="width:400px;">
+<img src="./images/home.png" alt="homepage" style="width:400px;">
+<img src="./images/savedRecipes.png" alt="profile" style="width:400px; height:260px;">
+<img src="./images/recipePage" alt="post" style="width:400px;">
+<img src="./images/dites.png" alt="messages" style="width:400px;">
+<img src="./images/savedExercises.png" alt="messages" style="width:400px;">
+<img src="./images/searchByNutrients.png" alt="messages" style="width:400px;">
+<img src="./images/savedExercises.png" alt="messages" style="width:400px;">
+<img src="./images/searchExpenditure.png" alt="messages" style="width:400px;">
+<img src="./images/searchExByOptions.png" alt="messages" style="width:400px;">
+<img src="./images/searchExcerciseByType.png" alt="messages" style="width:400px;">
 
 ## Features
 

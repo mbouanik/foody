@@ -6,6 +6,11 @@ const ProfileUser = () => {
   const { currentUser } = useContext(UserContext);
   const [profile, setProfile] = useState(new Set(currentUser.diet.split(",")));
 
-  return <ProfileForm />;
+  return (
+    <>
+      <h3 style={{ marginTop: "1rem" }}> Choose Your Diet </h3>
+      <ProfileForm />;
+    </>
+  );
 };
 export default ProfileUser;
