@@ -7,8 +7,8 @@ Welcome to the Foody Frontend repository! Foody is an innovative application des
 
 - [Features](#features)
 - [Prerequisites](#prerequisites)
-- [Installation](#installation)
 - [Environment Variables](#environment-variables)
+- [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Support](#support)
