@@ -25,46 +25,7 @@ Welcome to the Foody Frontend repository! Foody is an innovative application des
 
 Before you begin, ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/)
-
-## Installation
-
-1. **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/your-username/foody-frontend.git
-    cd foody-frontend
-    ```
-
-2. **Install Dependencies:**
-
-    ```bash
-    npm install
-    ```
-
-3. **Create Environment Variables:**
-
-    Create a `.env` file in the `foody-frontend` directory and add the following variables:
-
-    ```dotenv
-    REACT_APP_AUTH0_DOMAIN=""
-    REACT_APP_AUTH0_CLIENT_ID=""
-    REACT_APP_AUTH0_CALLBACK_URL=window.location.origin
-
-    REACT_APP_SPOONCULAR_API_KEY=""
-    REACT_APP_NUTRITIONIX_APP_ID=""
-    REACT_APP_NUTRITIONIX_APP_KEY=""
-
-    REACT_APP_API_NINJA=""
-    ```
-
-4. **Start the Development Server:**
-
-    ```bash
-    npm start
-    ```
-
-    The app will be accessible at `http://localhost:3000`.
+- [React](https://react.dev/)
 
 ## Environment Variables
 
@@ -81,6 +42,31 @@ REACT_APP_NUTRITIONIX_APP_KEY=""
 
 REACT_APP_API_NINJA=""
 ```
+
+
+## Installation
+
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/your-username/foody-frontend.git
+    cd foody-frontend
+    ```
+
+2. **Install Dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+4. **Start the Development Server:**
+
+    ```bash
+    npm start
+    ```
+
+    The app will be accessible at `http://localhost:3000`.
+
 
 5. **Open Your Browser:**
    - Navigate to `http://localhost:3000` to use Foody.
