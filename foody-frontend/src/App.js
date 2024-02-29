@@ -84,7 +84,10 @@ function App() {
   };
 
   const addExercise = async (data) => {
+    currentUser.exercises.push(data);
+    console.log(currentUser.exercises);
     const res = await FoodyApi.addExercise(data);
+    console.log(currentUser.exercises);
     return res;
   };
   const removeExercise = async (data) => {

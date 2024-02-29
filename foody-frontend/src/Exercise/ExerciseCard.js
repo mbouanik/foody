@@ -25,12 +25,11 @@ const ExerciseCard = ({ exercise, added }) => {
           text: "Add",
           handleExercise: handleAddExercise,
         });
-  }, [currentUser, exercisesIds]);
+  }, [currentUser]);
 
   const handleAddExercise = () => {
     exercise.user_id = currentUser.id;
-    console.log(currentUser);
-    console.log(exercise);
+    exercisesIds.add(exercise.name);
     addExercise(exercise);
     setButton({
       color: "secondary",
