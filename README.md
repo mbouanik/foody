@@ -151,7 +151,15 @@ To run Foody locally, follow these steps:
 
 ## Contributing
 
-If you'd like to contribute to Foody, please check out the [contributing guidelines](CONTRIBUTING.md).
+If you'd like to contribute to Foody.
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/your-feature`.
+3. Make your changes and commit: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin feature/your-feature`.
+5. Submit a pull request.
+
+For major changes, please open an issue first to discuss potential modifications.
 
 ## License
 
