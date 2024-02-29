@@ -25,3 +25,5 @@
 
 /foody-backend/.env
 /foody-frontend/.env
+
+.DS_Store
