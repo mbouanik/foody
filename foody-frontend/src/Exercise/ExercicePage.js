@@ -6,6 +6,8 @@ import SearchFormExercise from "../Search/SearchFormExercise";
 import SearchFormExerciseByMuscle from "../Search/SearchFormExerciseByMuscle";
 
 const ExercisePage = () => {
+  localStorage.setItem("lastVisitedURL", window.location.pathname);
+
   console.log(process.env);
   const [exercises, setExercises] = useState([]);
 

@@ -15,6 +15,7 @@ const ExerciseProfile = () => {
       console.log(currentUser);
       setExercises(currentUser.exercises);
     }
+    localStorage.setItem("lastVisitedURL", window.location.pathname);
   }, [currentUser]);
 
   if (!currentUser) {

@@ -7,10 +7,11 @@ import LogoutButton from "../LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../LoginButton";
 import "./NavBar.css";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
 const NavBar = ({ resetUser }) => {
   const { isAuthenticated, user } = useAuth0();
+  const navigate = useNavigate();
   return (
     <Navbar
       bg="success"
@@ -47,6 +48,15 @@ const NavBar = ({ resetUser }) => {
                     </NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
+                  <NavDropdown.Item>
+                    <button
+                      onClick={() =>
+                        navigate("/profile/recipes", { replace: true })
+                      }
+                    >
+                      RECIPE{" "}
+                    </button>
+                  </NavDropdown.Item>
                   <NavDropdown.Item>
                     <NavLink
                       style={{ textDecoration: "none", color: "grey" }}

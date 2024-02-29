@@ -9,6 +9,7 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import axios from "axios";
 import Loading from "./Loading";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const TOKEN_STORAGE = "foody-token";
@@ -16,7 +17,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const initCurrentUser = async () => {
       const res = token
@@ -28,7 +29,13 @@ function App() {
     if (isAuthenticated) {
       initCurrentUser();
     }
-  }, [isAuthenticated]);
+    const lastVisitedURL = localStorage.getItem("lastVisitedURL");
+
+    // Navigate to the last visited URL
+    if (lastVisitedURL) {
+      navigate(lastVisitedURL);
+    }
+  }, [isAuthenticated, navigate]);
 
   console.log(FoodyApi.token);
   const checkUser = async (id) => {

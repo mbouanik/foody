@@ -7,6 +7,8 @@ import SearchFormByIng from "../Search/SearchFromByIng";
 import "../Search/SearchByIngrPage.css";
 
 const SearchByIngrPage = () => {
+  localStorage.setItem("lastVisitedURL", window.location.pathname);
+
   const { isLoading } = useAuth0();
   const [foods, setFoods] = useState([]);
 

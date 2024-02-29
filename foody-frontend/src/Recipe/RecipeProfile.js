@@ -16,6 +16,7 @@ const RecipeProfile = () => {
       setFoods(currentUser.meals);
       console.log(mealsIds);
     }
+    localStorage.setItem("lastVisitedURL", window.location.pathname);
   }, [currentUser, mealsIds]);
 
   if (!currentUser) {

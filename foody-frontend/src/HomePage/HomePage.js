@@ -14,6 +14,8 @@ const HomePage = () => {
   const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
+    localStorage.setItem("lastVisitedURL", window.location.pathname);
+
     const exclude_tags = new Set([
       "gluten_free",
       "ketogenic",

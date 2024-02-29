@@ -4,6 +4,8 @@ import FoodList from "../Food/FoodList";
 import SearchForm from "../Search/SearchForm";
 
 const SearchPage = () => {
+  localStorage.setItem("lastVisitedURL", window.location.pathname);
+
   const [foods, setFoods] = useState([]);
   const search = async (nutrients) => {
     console.log(nutrients);
