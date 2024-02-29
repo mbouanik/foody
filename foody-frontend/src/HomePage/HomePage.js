@@ -14,7 +14,7 @@ const HomePage = () => {
   const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (currentUser) {
       localStorage.setItem("lastVisitedURL", window.location.pathname);
     }
 

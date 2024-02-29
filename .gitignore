@@ -22,3 +22,6 @@
 /foody-frontend/npm-debug.log*
 /foody-frontend/yarn-debug.log*
 /foody-frontend/yarn-error.log*
+
+/foody-backend/.env
+/foody-frontend/.env
