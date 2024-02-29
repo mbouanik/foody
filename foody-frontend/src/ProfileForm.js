@@ -9,6 +9,7 @@ const ProfileForm = ({ userDiet }) => {
   const exclude_tags = new Set(currentUser.diet.split(","));
 
   useEffect(() => {
+    localStorage.setItem("lastVisitedURL", window.location.pathname);
     console.log(exclude_tags);
     // const init = () => {
     setDiets({

@@ -49,15 +49,6 @@ const NavBar = ({ resetUser }) => {
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item>
-                    <button
-                      onClick={() =>
-                        navigate("/profile/recipes", { replace: true })
-                      }
-                    >
-                      RECIPE{" "}
-                    </button>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
                     <NavLink
                       style={{ textDecoration: "none", color: "grey" }}
                       to="/profile/recipes"

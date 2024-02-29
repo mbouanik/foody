@@ -18,6 +18,7 @@ function App() {
   const { isAuthenticated, user } = useAuth0();
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE);
   const navigate = useNavigate();
+
   useEffect(() => {
     const initCurrentUser = async () => {
       const res = token
@@ -32,7 +33,7 @@ function App() {
     const lastVisitedURL = localStorage.getItem("lastVisitedURL");
 
     // Navigate to the last visited URL
-    if (lastVisitedURL) {
+    if (lastVisitedURL && isAuthenticated) {
       navigate(lastVisitedURL);
     }
   }, [isAuthenticated, navigate]);
@@ -106,6 +107,7 @@ function App() {
     setToken(null);
     localStorage.clear();
     localStorage.removeItem("foody-token");
+    localStorage.removeItem("lastVisitedURL");
     setCurrentUser(null);
   };
   const updateProfile = async (data) => {
