@@ -1,7 +1,8 @@
-
 # Foody
 
-Foody is an application designed to help you manage your meals and exercise routines. Whether you want to save your favorite dishes based on diet preferences, discover recipes by typing ingredients, or plan workouts with specific nutrient ratios, Foody has you covered [Foody](https://foody-24sx.onrender.com).
+Foody is a versatile application designed to simplify your meal and exercise management. Whether you want to organize your favorite dishes based on diet, explore recipes using specific ingredients, or plan your workouts with personalized nutrient ratios, Foody has got you covered. [Explore Foody](https://foody-24sx.onrender.com).
+
+![Foody Screenshots]
 
 <br>\
 <img src="./images/landingpage.png" alt="signup" style="width:400px;">
@@ -16,6 +17,19 @@ Foody is an application designed to help you manage your meals and exercise rout
 <img src="./images/searchExpenditure.png" alt="messages" style="width:400px;">
 <img src="./images/searchExByOptions.png" alt="messages" style="width:400px;">
 <img src="./images/searchExcerciseByType.png" alt="messages" style="width:400px;">
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Database Setup](#database-setup)
+- [Usage](#usage)
+- [APIs Used](#apis-used)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
@@ -37,11 +51,6 @@ Foody is an application designed to help you manage your meals and exercise rout
 - Specify exercise types like cardio or strength training.
 - Customize the difficulty level from beginner to expert.
 
-## API used
-- **spoonacular API:** for food nutrients https://spoonacular.com/food-api
-- **API Ninja:** exercises tip and instruction https://api-ninjas.com/api/exercises
-- **Nutritionix:** for exercies expenditure https://developer.syndigo.com/docs/natural-language-for-exercise
-
 ## Tech Stack
 
 ### Backend
@@ -56,7 +65,6 @@ Foody is an application designed to help you manage your meals and exercise rout
 ## Getting Started
 
 To run Foody locally, follow these steps:
-
 
 1. **Clone the repository:**
     ```bash
@@ -77,8 +85,9 @@ To run Foody locally, follow these steps:
      npm install
      ```
 
-3. **Set up PostgreSQL Database:**
-   - Create a new database called foody and configure the connection in the backend.
+3. **Database Setup:**
+   - Create a new PostgreSQL database called foody.
+   - Configure the database connection in the backend.
 
 4. **Start the Servers:**
    - Backend:
@@ -95,6 +104,12 @@ To run Foody locally, follow these steps:
 
 5. **Open Your Browser:**
    - Navigate to `http://localhost:3000` to use Foody.
+
+## APIs Used
+
+- **Spoonacular API:** for food nutrients [Spoonacular](https://spoonacular.com/food-api)
+- **API Ninja:** exercises tips and instructions [API Ninja](https://api-ninjas.com/api/exercises)
+- **Nutritionix:** for exercise expenditure [Nutritionix](https://developer.syndigo.com/docs/natural-language-for-exercise)
 
 ## Contributing
 
