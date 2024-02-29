@@ -25,7 +25,7 @@ app.use("/exercises", exercisesRoutes);
 
 app.get("*", (req, res) => {
   res.sendFile(
-    path.join(__dirname, "..", "foody-frontend", "build", "public/index.html"),
+    path.join(__dirname, "..", "foody-frontend", "build", "index.html"),
   );
 });
 /** Handle 404 errors -- this matches everything */

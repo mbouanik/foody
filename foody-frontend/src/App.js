@@ -20,7 +20,6 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem("lastVisitedURL", window.location.pathname);
     const initCurrentUser = async () => {
       const res = token
         ? await getCurrentUser(token)
