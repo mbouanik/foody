@@ -23,6 +23,11 @@ app.use("/auth", usersRoutes);
 app.use("/meals", mealsRoutes);
 app.use("/exercises", exercisesRoutes);
 
+app.get("*", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "foody-frontend", "build", "public/index.html"),
+  );
+});
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {
   return next(new NotFoundError());
