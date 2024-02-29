@@ -14,7 +14,7 @@ const SearchByIngrPage = () => {
 
   const searchByIngr = async (data) => {
     const params = {
-      apiKey: process.env.REACT_APP_API_KEY,
+      apiKey: process.env.REACT_APP_SPOONACULAR_API_KEY,
       ...data,
     };
     const res = await axios.get(
@@ -32,34 +32,6 @@ const SearchByIngrPage = () => {
     setFoods(recipeInfo.data);
   };
 
-  // const searchByIngr = async (data) => {
-  //   const params = {
-  //     type: "public",
-  //     app_id: process.env.REACT_APP_EDAMAM_APP_ID,
-  //     app_key: process.env.REACT_APP_EDAMAM_APP_KEY,
-  //     q: data.ingredients,
-  //     random: true,
-  //   };
-  //   const headers = {
-  //     headers: {
-  //       accept: "application/json",
-  //       "Accept-Language": "en",
-  //     },
-  //   };
-  //
-  //   const res = await axios.get(
-  //     "https://api.edamam.com/api/recipes/v2",
-  //     {
-  //       params,
-  //     },
-  //     headers,
-  //   );
-  //   console.log(res);
-  //
-  //   console.log(res.data.hits);
-  //   setFoods(res.data.hits.map((hit) => hit.recipe));
-  // };
-  //
   if (isLoading) {
     return <Loading />;
   }

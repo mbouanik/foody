@@ -10,7 +10,7 @@ const SearchPage = () => {
   const search = async (nutrients) => {
     console.log(nutrients);
     const params = {
-      apiKey: process.env.REACT_APP_API_KEY,
+      apiKey: process.env.REACT_APP_SPOONACULAR_API_KEY,
       ...nutrients,
 
       // dataType: "Foundation",

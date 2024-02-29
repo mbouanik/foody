@@ -7,7 +7,7 @@ const RecipePage = () => {
   const [recipe, setRecipe] = useState({});
   const urlParams = useParams();
   const params = {
-    apiKey: process.env.REACT_APP_API_KEY,
+    apiKey: process.env.REACT_APP_SPOONACULAR_API_KEY,
   };
 
   useEffect(() => {

@@ -2,6 +2,6 @@ import React from "react";
 import { render } from "@testing-library/react";
 import ExerciseCard from "./ExerciseCard";
 
-it("", () => {
+it("not break", () => {
   render(<ExerciseCard />);
 });
