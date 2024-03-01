@@ -1,8 +1,7 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import parse from "html-react-parser";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import UserContext from "../UserContext";
 import "./FoodCard.css";
 
@@ -12,22 +11,23 @@ const FoodCard = ({ food, added }) => {
   const { currentUser, addMeal, removeMeal } = useContext(UserContext);
   const [button, setButton] = useState({ color: "", text: "" });
   const [mealsIds, setMealsIds] = useState(new Set());
-  const { isAuthenticated } = useAuth0();
   useEffect(() => {
     if (currentUser) {
       setMealsIds(new Set(currentUser.meals.map((meal) => meal.spoon_id)));
 
-      added
-        ? setButton({
-            color: "secondary",
-            text: "Remove",
-            handleMeal: handleRemoveMeal,
-          })
-        : setButton({
-            color: "outline-success",
-            text: "Add",
-            handleMeal: handleAddMeal,
-          });
+      setButton(
+        added
+          ? {
+              color: "secondary",
+              text: "Remove",
+              handleMeal: handleRemoveMeal,
+            }
+          : {
+              color: "outline-success",
+              text: "Add",
+              handleMeal: handleAddMeal,
+            },
+      );
     }
   }, [currentUser]);
 
@@ -80,10 +80,9 @@ const FoodCard = ({ food, added }) => {
         <Card.Footer
           style={{ display: "flex", justifyContent: "space-evenly" }}
         >
-          <Link className="btn btn-success" to={`/recipes/${food.id}`}>
-            {" "}
+          <NavLink className="btn btn-success" to={`/recipes/${food.id}`}>
             Recipe
-          </Link>
+          </NavLink>
 
           <Button variant={button.color} onClick={button.handleMeal}>
             {button.text}

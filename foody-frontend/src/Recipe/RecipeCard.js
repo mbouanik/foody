@@ -1,4 +1,3 @@
-import HTMLReactParser from "html-react-parser";
 import React from "react";
 import Card from "react-bootstrap/Card";
 import parse from "html-react-parser";
@@ -12,23 +11,25 @@ const RecipeCard = ({ recipe }) => {
       <Card style={{ width: "50rem" }}>
         <Card.Img variant="top" src={recipe.image} />
         <Card.Body>
-          <Card.Title>
+          <Card.Header>
             <h2> {recipe.title} </h2>
+          </Card.Header>
+          <Card.Title style={{ marginTop: "1rem" }}>
+            {parse(`${recipe.summary}`)}
           </Card.Title>
-          <Card.Text>{parse(`${recipe.summary}`)}</Card.Text>
 
-          <Card.Text>
+          <Card.Body>
             <h3> Ingredients </h3>
             {recipe.extendedIngredients
               ? recipe.extendedIngredients.map((ingr) => (
                   <div> {ingr.original}</div>
                 ))
               : ""}
-          </Card.Text>
-          <Card.Text>
-            <h3 className="RecipeCard-h3">Instructions </h3>
-            {parse(`${recipe.instructions}`)}
-          </Card.Text>
+          </Card.Body>
+          <h3 className="RecipeCard-h3">Instructions </h3>
+          <Card.Body>
+            <div>{parse(`${recipe.instructions}`)}</div>
+          </Card.Body>
         </Card.Body>
         <Card.Footer>
           {recipe.diets

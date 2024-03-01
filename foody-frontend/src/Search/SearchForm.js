@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import FormRange from "react-bootstrap/esm/FormRange";
-import UserContext from "../UserContext";
+import React, { useState } from "react";
+import { Form } from "react-bootstrap";
 
 const SearchForm = ({ searchFor }) => {
   const INITIAL_VALUE = {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 const SearchFormExercise = ({ searchExercise }) => {
   const [formData, setFormData] = useState({
     query: "",

@@ -5,16 +5,17 @@ import RecipeCard from "./RecipeCard";
 
 const RecipePage = () => {
   const [recipe, setRecipe] = useState({});
-  const urlParams = useParams();
-  const params = {
-    apiKey: process.env.REACT_APP_SPOONACULAR_API_KEY,
-  };
+  const { id } = useParams();
 
   useEffect(() => {
+    const params = {
+      apiKey: process.env.REACT_APP_SPOONACULAR_API_KEY,
+    };
+
     localStorage.setItem("lastVisitedURL", window.location.pathname);
     const getRecipe = async () => {
       const res = await axios.get(
-        `https://api.spoonacular.com/recipes/${urlParams.id}/information`,
+        `https://api.spoonacular.com/recipes/${id}/information`,
         {
           params,
         },

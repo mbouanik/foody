@@ -44,6 +44,8 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^14.2.1"
+    "@babel/plugin-syntax-jsx": "^7.23.3",
+    "@testing-library/react": "^14.2.1",
+    "add": "^2.0.6"
   }
 }

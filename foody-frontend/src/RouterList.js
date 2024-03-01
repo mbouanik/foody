@@ -2,7 +2,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import ExercisePage from "./Exercise/ExercicePage";
 import ExerciseProfile from "./Exercise/ExerciseProfile";
-import FoodList from "./Food/FoodList";
 import HomePage from "./HomePage/HomePage";
 import PrivateRoutes from "./PrivateRoutes";
 import ProfileUser from "./ProfileUser";
@@ -12,7 +11,6 @@ import SearchByIngrPage from "./Search/SearchByIngrPage";
 import SearchPage from "./Search/SearchPage";
 
 const RouterList = () => {
-  const { user } = useAuth0();
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />

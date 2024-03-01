@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import ProfileUser from "./ProfileUser";
 import UserContext from "./UserContext";
 
 const ProfileForm = ({ userDiet }) => {

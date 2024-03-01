@@ -97,10 +97,7 @@ function App() {
     const res = await FoodyApi.removeExercise(data);
     return res;
   };
-  const resetUser = () => {
-    console.log(token);
-    setCurrentUser(null);
-  };
+
   const updateProfile = async (data) => {
     const res = await FoodyApi.updateProfile(data);
     return res;
