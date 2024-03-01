@@ -51,9 +51,12 @@ Foody is a versatile application designed to simplify your meal and exercise man
 - Customize the difficulty level from beginner to expert.
 
 ## API used
-- **spoonacular API:** for food nutrients https://spoonacular.com/food-api
-- **API Ninja:** exercises tip and instruction https://api-ninjas.com/api/exercises
-- **Nutritionix:** for exercies expenditure https://developer.syndigo.com/docs/natural-language-for-exercise
+- **Spoonacular API:** for food nutrients [Spoonacular](https://spoonacular.com/food-api)
+- **API Ninja:** exercises tip and instruction [API Ninja](https://api-ninjas.com/api/exercises)
+- **Nutritionix:** for exercies expenditure [Nutritionix](https://developer.syndigo.com/docs/natural-language-for-exercise)
+
+## Authentificartion
+- **Auth0** a platform companies and web developers use to verify a user's identity before giving them access to websites and applications.[Auth0](https://auth0.com)
 
 ## Tech Stack
 

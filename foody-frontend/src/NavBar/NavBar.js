@@ -103,7 +103,11 @@ const NavBar = ({ resetUser }) => {
             )}
           </Nav>
           <Nav.Link>
-            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+            {isAuthenticated ? (
+              <LogoutButton resetUser={resetUser} />
+            ) : (
+              <LoginButton />
+            )}
           </Nav.Link>
         </Navbar.Collapse>
       </Container>

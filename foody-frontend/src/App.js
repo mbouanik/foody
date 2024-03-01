@@ -32,12 +32,6 @@ function App() {
     };
     if (isAuthenticated) {
       initCurrentUser();
-    } else {
-      localStorage.removeItem("foody-token");
-      localStorage.removeItem("lastVisitedURL");
-      localStorage.clear();
-      FoodyApi.token = null;
-      setToken(null);
     }
     const lastVisitedURL = localStorage.getItem("lastVisitedURL");
 
@@ -45,7 +39,7 @@ function App() {
     if (lastVisitedURL && isAuthenticated) {
       navigate(lastVisitedURL);
     }
-  }, [isAuthenticated, navigate, token]);
+  }, [isAuthenticated, navigate]);
 
   const getCurrentUser = async (token) => {
     FoodyApi.token = token;
@@ -102,6 +96,11 @@ function App() {
     const res = await FoodyApi.updateProfile(data);
     return res;
   };
+  const resetUser = () => {
+    window.localStorage.clear();
+    FoodyApi.token = null;
+    setToken(null);
+  };
   return (
     <UserContext.Provider
       value={{
@@ -116,7 +115,7 @@ function App() {
       }}
     >
       <div className="App">
-        <Navbar />
+        <Navbar resetUser={resetUser} />
         <RouterList />
       </div>
     </UserContext.Provider>

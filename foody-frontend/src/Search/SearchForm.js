@@ -28,7 +28,7 @@ const SearchForm = ({ searchFor }) => {
   };
   return (
     <Form
-      style={{ marginLeft: "20rem", marginRight: "20rem" }}
+      style={{ marginLeft: "5rem", marginRight: "5rem" }}
       onSubmit={handleSubmit}
     >
       <Form.Label htmlFor="maxCalories" style={{ color: "blue" }}>
