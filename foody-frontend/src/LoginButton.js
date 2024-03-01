@@ -1,6 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
-import { NavLink } from "react-bootstrap";
 
 export const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
@@ -8,17 +7,13 @@ export const LoginButton = () => {
   const handleLogin = async () => {
     await loginWithRedirect({
       appState: {
-        returnTo: "/profile",
+        returnTo: "/",
       },
     });
   };
 
   return (
-    <button
-      // style={{ color: "green" }}
-      className="btn btn-outline-success"
-      onClick={handleLogin}
-    >
+    <button className="btn btn-outline-success" onClick={handleLogin}>
       Log In/Sign Up
     </button>
   );
