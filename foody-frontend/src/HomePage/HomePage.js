@@ -45,11 +45,11 @@ const HomePage = () => {
       );
       setFoods(res.data.recipes);
     };
-    if (currentUser) {
+    if (isAuthenticated && currentUser) {
       localStorage.setItem("lastVisitedURL", window.location.pathname);
       getRandomRecipes();
     }
-  }, [currentUser]);
+  }, [currentUser, isAuthenticated]);
 
   if (isLoading) {
     return <Loading />;
@@ -57,7 +57,7 @@ const HomePage = () => {
 
   return (
     <>
-      {isAuthenticated ? (
+      {isAuthenticated || currentUser ? (
         <div>
           <FoodList foods={foods} />
         </div>

@@ -7,11 +7,10 @@ import LogoutButton from "../LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../LoginButton";
 import "./NavBar.css";
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavBar = ({ resetUser }) => {
   const { isAuthenticated, user } = useAuth0();
-  const navigate = useNavigate();
   return (
     <Navbar
       bg="success"
@@ -85,27 +84,26 @@ const NavBar = ({ resetUser }) => {
                     </NavLink>
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="">
-                  <NavLink
-                    className="secondary"
-                    style={{ textDecoration: "none", color: "grey" }}
-                    to="/exercises"
-                  >
-                    {" "}
-                    Exercises{" "}
-                  </NavLink>
-                </Nav.Link>
+                <NavLink
+                  className="secondary"
+                  style={{
+                    textDecoration: "none",
+                    color: "grey",
+                    display: "flex",
+                    alignSelf: "center",
+                  }}
+                  to="/exercises"
+                >
+                  {" "}
+                  Exercises{" "}
+                </NavLink>
               </>
             ) : (
               ""
             )}
           </Nav>
           <Nav.Link>
-            {!isAuthenticated ? (
-              <LoginButton />
-            ) : (
-              <LogoutButton resetUser={resetUser} />
-            )}
+            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           </Nav.Link>
         </Navbar.Collapse>
       </Container>

@@ -1,9 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import ExerciseCard from "./ExerciseCard";
 import ExerciseList from "./ExerciseList";
 import SearchFormExercise from "../Search/SearchFormExercise";
-import SearchFormExerciseByMuscle from "../Search/SearchFormExerciseByMuscle";
+import SearchFormExerciseByType from "../Search/SearchFormExerciseByType";
 
 const ExercisePage = () => {
   localStorage.setItem("lastVisitedURL", window.location.pathname);
@@ -33,7 +32,7 @@ const ExercisePage = () => {
     setExercises(res.data.exercises);
   };
 
-  const searchExercieByMuscle = async (data) => {
+  const searchExercieByType = async (data) => {
     const headers = {
       "X-Api-Key": process.env.REACT_APP_API_NINJA,
     };
@@ -50,9 +49,7 @@ const ExercisePage = () => {
   return (
     <>
       <SearchFormExercise searchExercise={searchExercise} />
-      <SearchFormExerciseByMuscle
-        searchExercieByMuscle={searchExercieByMuscle}
-      />
+      <SearchFormExerciseByType searchExercieByType={searchExercieByType} />
       <ExerciseList exercises={exercises} />
     </>
   );

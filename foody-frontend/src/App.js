@@ -7,7 +7,6 @@ import Navbar from "./NavBar/NavBar";
 import UserContext from "./UserContext";
 import useLocalStorage from "./hooks/useLocalStorage";
 import axios from "axios";
-import Loading from "./Loading";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
@@ -19,16 +18,26 @@ function App() {
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE);
   const navigate = useNavigate();
 
+  const checkUser = async () => {
+    const res = await FoodyApi.checkUser(user.sub);
+    setToken(res.user.token);
+    FoodyApi.token = res.user.token;
+    return res;
+  };
+
   useEffect(() => {
     const initCurrentUser = async () => {
-      const res = token
-        ? await getCurrentUser(token)
-        : await checkUser(user.sub);
-
+      const res = token ? await getCurrentUser(token) : await checkUser();
       setCurrentUser(res.user);
     };
     if (isAuthenticated) {
       initCurrentUser();
+    } else {
+      localStorage.removeItem("foody-token");
+      localStorage.removeItem("lastVisitedURL");
+      localStorage.clear();
+      FoodyApi.token = null;
+      setToken(null);
     }
     const lastVisitedURL = localStorage.getItem("lastVisitedURL");
 
@@ -36,14 +45,7 @@ function App() {
     if (lastVisitedURL && isAuthenticated) {
       navigate(lastVisitedURL);
     }
-  }, [isAuthenticated, navigate]);
-
-  const checkUser = async (id) => {
-    const res = await FoodyApi.checkUser(id);
-    setToken(res.user.token);
-    FoodyApi.token = res.user.token;
-    return res;
-  };
+  }, [isAuthenticated, navigate, token]);
 
   const getCurrentUser = async (token) => {
     FoodyApi.token = token;
@@ -96,10 +98,7 @@ function App() {
     return res;
   };
   const resetUser = () => {
-    setToken(null);
-    localStorage.clear();
-    localStorage.removeItem("foody-token");
-    localStorage.removeItem("lastVisitedURL");
+    console.log(token);
     setCurrentUser(null);
   };
   const updateProfile = async (data) => {
@@ -116,10 +115,11 @@ function App() {
         removeExercise,
         setToken,
         updateProfile,
+        setCurrentUser,
       }}
     >
       <div className="App">
-        <Navbar resetUser={resetUser} />
+        <Navbar />
         <RouterList />
       </div>
     </UserContext.Provider>

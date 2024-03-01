@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Button, Form } from "react-bootstrap";
-const SearchFormExerciseByMuscle = ({ searchExercieByMuscle }) => {
+const SearchFormExerciseByType = ({ searchExercieByType }) => {
   const [formData, setFormData] = useState({
     query: "",
     type: "",
@@ -23,7 +23,7 @@ const SearchFormExerciseByMuscle = ({ searchExercieByMuscle }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log(formData);
-    searchExercieByMuscle(formData);
+    searchExercieByType(formData);
   };
 
   const handleOptions = (evt) => {
@@ -95,4 +95,4 @@ const SearchFormExerciseByMuscle = ({ searchExercieByMuscle }) => {
   );
 };
 
-export default SearchFormExerciseByMuscle;
+export default SearchFormExerciseByType;

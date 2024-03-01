@@ -1,6 +1,7 @@
 import React from "react";
 import "./NotLoging.css";
 const NotLogin = () => {
+  // localStorage.clear();
   return (
     <div className="NotLogin-display">
       <div className="NotLogin-title">
