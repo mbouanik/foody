@@ -33,7 +33,7 @@ const HomePage = () => {
       const tags = new Set(currentUser.diet.split(","));
       const params = {
         apiKey: process.env.REACT_APP_SPOONACULAR_API_KEY,
-        number: 10,
+        number: 9,
         "include-tags": currentUser.diet,
         "exclude-tags": exclude_tags.filter((tag) => !tags.has(tag)).join(","),
       };
