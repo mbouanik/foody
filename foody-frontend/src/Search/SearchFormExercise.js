@@ -15,7 +15,6 @@ const SearchFormExercise = ({ searchExercise }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(formData);
     searchExercise(formData);
   };
 

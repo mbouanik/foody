@@ -8,7 +8,6 @@ const SearchPage = () => {
 
   const [foods, setFoods] = useState([]);
   const search = async (nutrients) => {
-    console.log(nutrients);
     const params = {
       apiKey: process.env.REACT_APP_SPOONACULAR_API_KEY,
       ...nutrients,
@@ -27,7 +26,6 @@ const SearchPage = () => {
       },
       headers,
     );
-    console.log(res.data);
     setFoods(res.data);
   };
   return (

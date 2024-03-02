@@ -27,8 +27,8 @@ class FoodyApi {
     const res = await this.request(`auth/get-user/${id}`);
     return res;
   }
-  static async checkUser(id) {
-    const res = await axios.get(`${BASE_URL}/auth/check-user/${id}`);
+  static async checkUser(data) {
+    const res = await axios.post(`${BASE_URL}/auth/check-user`, data);
     return res.data;
   }
 

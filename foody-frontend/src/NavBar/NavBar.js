@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import LogoutButton from "../LogoutButton";
-import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../LoginButton";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
+import UserContext from "../UserContext";
 
 const NavBar = ({ resetUser }) => {
-  const { isAuthenticated, user } = useAuth0();
+  const { token, currentUser } = useContext(UserContext);
   return (
     <Navbar
       bg="success"
@@ -35,7 +35,7 @@ const NavBar = ({ resetUser }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" style={{ right: 0 }}>
           <Nav className="me-auto">
-            {isAuthenticated ? (
+            {token ? (
               <>
                 <NavDropdown title={`Profile`}>
                   <NavDropdown.Item>
@@ -43,7 +43,7 @@ const NavBar = ({ resetUser }) => {
                       to={`/profile/user`}
                       style={{ textDecoration: "none", color: "grey" }}
                     >
-                      {isAuthenticated ? user.nickname : ""}{" "}
+                      {currentUser ? currentUser.name : ""}
                     </NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
@@ -80,7 +80,7 @@ const NavBar = ({ resetUser }) => {
                       style={{ textDecoration: "none", color: "grey" }}
                       to="/search/ingredients"
                     >
-                      Ingredients{" "}
+                      Ingredients
                     </NavLink>
                   </NavDropdown.Item>
                 </NavDropdown>
@@ -94,21 +94,16 @@ const NavBar = ({ resetUser }) => {
                   }}
                   to="/exercises"
                 >
-                  {" "}
-                  Exercises{" "}
+                  Exercises
                 </NavLink>
               </>
             ) : (
               ""
             )}
           </Nav>
-          <Nav.Link>
-            {isAuthenticated ? (
-              <LogoutButton resetUser={resetUser} />
-            ) : (
-              <LoginButton />
-            )}
-          </Nav.Link>
+          <NavLink>
+            {token ? <LogoutButton resetUser={resetUser} /> : <LoginButton />}
+          </NavLink>
         </Navbar.Collapse>
       </Container>
     </Navbar>

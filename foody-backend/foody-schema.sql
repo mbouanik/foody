@@ -2,7 +2,9 @@
 -- Create the 'users' table
 CREATE TABLE users (
     id VARCHAR(50) PRIMARY KEY,
+    name VARCHAR(25),
     diet VARCHAR(50) 
+
 );
 
 -- Create the 'exercises' table with a foreign key reference to 'users'

@@ -10,7 +10,7 @@ import "./HomePage.css";
 const HomePage = () => {
   const { isAuthenticated, isLoading } = useAuth0();
   const [foods, setFoods] = useState([]);
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, token } = useContext(UserContext);
 
   useEffect(() => {
     if (currentUser) {
@@ -45,7 +45,7 @@ const HomePage = () => {
       );
       setFoods(res.data.recipes);
     };
-    if (isAuthenticated && currentUser) {
+    if (token && currentUser) {
       localStorage.setItem("lastVisitedURL", window.location.pathname);
       getRandomRecipes();
     }
@@ -57,7 +57,7 @@ const HomePage = () => {
 
   return (
     <>
-      {isAuthenticated || currentUser ? (
+      {token ? (
         <div>
           <FoodList foods={foods} />
         </div>

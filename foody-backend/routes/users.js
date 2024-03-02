@@ -5,8 +5,8 @@ const { createToken } = require("../helper/token");
 const router = express.Router();
 const { ensureLoggedIn } = require("../middleware/auth");
 
-router.get("/check-user/:id", async (req, res, next) => {
-  const user = await User.checkeUser(req.params.id);
+router.post("/check-user", async (req, res, next) => {
+  const user = await User.checkeUser(req.body);
   user.token = createToken(user);
 
   return res.json({ user });

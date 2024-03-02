@@ -23,7 +23,6 @@ const SearchForm = ({ searchFor }) => {
   };
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log(formData);
     searchFor(formData);
   };
   return (

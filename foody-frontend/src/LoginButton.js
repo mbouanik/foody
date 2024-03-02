@@ -13,7 +13,11 @@ export const LoginButton = () => {
   };
 
   return (
-    <button className="btn btn-outline-success" onClick={handleLogin}>
+    <button
+      style={{ fontWeight: "bold" }}
+      className="btn btn-outline-success"
+      onClick={handleLogin}
+    >
       Log In/Sign Up
     </button>
   );

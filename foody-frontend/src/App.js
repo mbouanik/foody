@@ -19,7 +19,7 @@ function App() {
   const navigate = useNavigate();
 
   const checkUser = async () => {
-    const res = await FoodyApi.checkUser(user.sub);
+    const res = await FoodyApi.checkUser({ id: user.sub, name: user.nickname });
     setToken(res.user.token);
     FoodyApi.token = res.user.token;
     return res;
@@ -30,13 +30,13 @@ function App() {
       const res = token ? await getCurrentUser(token) : await checkUser();
       setCurrentUser(res.user);
     };
-    if (isAuthenticated) {
+    if (isAuthenticated || token) {
       initCurrentUser();
     }
     const lastVisitedURL = localStorage.getItem("lastVisitedURL");
 
     // Navigate to the last visited URL
-    if (lastVisitedURL && isAuthenticated) {
+    if (lastVisitedURL && token) {
       navigate(lastVisitedURL);
     }
   }, [isAuthenticated, navigate]);
@@ -112,6 +112,7 @@ function App() {
         setToken,
         updateProfile,
         setCurrentUser,
+        token,
       }}
     >
       <div className="App">

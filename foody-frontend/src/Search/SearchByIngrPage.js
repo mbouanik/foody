@@ -1,15 +1,12 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import React, { useState } from "react";
 import FoodList from "../Food/FoodList";
-import Loading from "../Loading";
 import SearchFormByIng from "../Search/SearchFromByIng";
 import "../Search/SearchByIngrPage.css";
 
 const SearchByIngrPage = () => {
   localStorage.setItem("lastVisitedURL", window.location.pathname);
 
-  const { isLoading } = useAuth0();
   const [foods, setFoods] = useState([]);
 
   const searchByIngr = async (data) => {
@@ -31,10 +28,6 @@ const SearchByIngrPage = () => {
     );
     setFoods(recipeInfo.data);
   };
-
-  if (isLoading) {
-    return <Loading />;
-  }
 
   return (
     <>
