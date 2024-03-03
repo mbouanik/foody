@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 const SearchFormExerciseByType = ({ searchExercieByType }) => {
-  const [formData, setFormData] = useState({
+  const INITIAL_VALUES = {
     query: "",
     type: "",
     difficulty: "",
-  });
+  };
+  const [formData, setFormData] = useState(INITIAL_VALUES);
   const [placeholder, setPlaceholder] = useState("");
   const [options, setOptions] = useState({
     type: "exercise type ex: cardio, olympic weightlifting, plyometrics, powerlifting, strength, stretching, strongman",
@@ -20,9 +21,19 @@ const SearchFormExerciseByType = ({ searchExercieByType }) => {
     }));
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    searchExercieByType(formData);
+    await searchExercieByType(formData);
+    console.log(formData);
+    evt.target.children[0].value = "Options";
+    evt.target.children[2].children[0].checked = false;
+    evt.target.children[3].children[0].checked = false;
+    evt.target.children[4].children[0].checked = false;
+    console.log(evt.target.children);
+    setPlaceholder("");
+
+    setFormData(INITIAL_VALUES);
+    // setPlaceholder("");
   };
 
   const handleOptions = (evt) => {

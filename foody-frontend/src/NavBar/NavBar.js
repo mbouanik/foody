@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,6 +13,7 @@ import UserContext from "../UserContext";
 
 const NavBar = ({ resetUser }) => {
   const { token, currentUser } = useContext(UserContext);
+  const { isAuthenticated } = useAuth0();
   return (
     <Navbar
       bg="success"
@@ -35,7 +38,7 @@ const NavBar = ({ resetUser }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" style={{ right: 0 }}>
           <Nav className="me-auto">
-            {token ? (
+            {isAuthenticated || token ? (
               <>
                 <NavDropdown title={`Profile`}>
                   <NavDropdown.Item>
@@ -102,7 +105,11 @@ const NavBar = ({ resetUser }) => {
             )}
           </Nav>
           <NavLink>
-            {token ? <LogoutButton resetUser={resetUser} /> : <LoginButton />}
+            {isAuthenticated || token ? (
+              <LogoutButton resetUser={resetUser} />
+            ) : (
+              <LoginButton />
+            )}
           </NavLink>
         </Navbar.Collapse>
       </Container>

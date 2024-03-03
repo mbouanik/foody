@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 const SearchFormByIng = ({ searchByIngr }) => {
-  const [formData, setFormData] = useState({
-    ingredients: "",
-    number: 30,
-  });
+  const INITIAL_VALUES = { ingredients: "", number: 30 };
+  const [formData, setFormData] = useState(INITIAL_VALUES);
 
   const handleChange = (evt) => {
     setFormData((formData) => ({
@@ -14,9 +12,10 @@ const SearchFormByIng = ({ searchByIngr }) => {
     }));
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    searchByIngr(formData);
+    await searchByIngr(formData);
+    setFormData(INITIAL_VALUES);
   };
 
   return (
@@ -36,8 +35,11 @@ const SearchFormByIng = ({ searchByIngr }) => {
         name="ingredients"
         onChange={handleChange}
         placeholder="Search recipe by ingredient ex: avocado,eggs,..."
+        data-testid="items"
       />
-      <button className="btn btn-success"> Submit</button>
+      <button className="btn btn-success" data-testid="btn">
+        Submit
+      </button>
     </Form>
   );
 };

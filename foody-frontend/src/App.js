@@ -30,7 +30,7 @@ function App() {
       const res = token ? await getCurrentUser(token) : await checkUser();
       setCurrentUser(res.user);
     };
-    if (isAuthenticated || token) {
+    if (isAuthenticated) {
       initCurrentUser();
     }
     const lastVisitedURL = localStorage.getItem("lastVisitedURL");

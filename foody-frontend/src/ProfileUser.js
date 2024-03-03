@@ -1,6 +1,4 @@
-import React, { useContext, useState } from "react";
 import ProfileForm from "./ProfileForm";
-import UserContext from "./UserContext";
 
 const ProfileUser = () => {
   return (

@@ -1,12 +1,12 @@
-import App from "./App";
+import NavBar from "./NavBar.js";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { UserProvider } from "./testUtils.js";
+import { UserProvider } from "../testUtils.js";
 
 jest.mock("@auth0/auth0-react");
 
-describe("App test ", () => {
+describe("NavBar test ", () => {
   beforeEach(() => {
     useAuth0.mockReturnValue({
       loginWithRedirect: jest.fn(),
@@ -21,7 +21,7 @@ describe("App test ", () => {
     render(
       <MemoryRouter>
         <UserProvider>
-          <App />
+          <NavBar />
         </UserProvider>
       </MemoryRouter>,
     );
@@ -34,7 +34,7 @@ describe("App test ", () => {
     const { getByText } = render(
       <MemoryRouter>
         <UserProvider>
-          <App />
+          <NavBar />
         </UserProvider>
       </MemoryRouter>,
     );
@@ -80,7 +80,7 @@ describe("The Application Component in logged in state", () => {
     render(
       <MemoryRouter>
         <UserProvider>
-          <App />
+          <NavBar />
         </UserProvider>
       </MemoryRouter>,
     );

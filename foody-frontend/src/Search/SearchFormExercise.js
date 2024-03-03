@@ -2,9 +2,10 @@ import React, { useState } from "react";
 
 import { Form } from "react-bootstrap";
 const SearchFormExercise = ({ searchExercise }) => {
-  const [formData, setFormData] = useState({
+  const INITIAL_VALUES = {
     query: "",
-  });
+  };
+  const [formData, setFormData] = useState(INITIAL_VALUES);
 
   const handleChange = (evt) => {
     setFormData((formData) => ({
@@ -13,9 +14,10 @@ const SearchFormExercise = ({ searchExercise }) => {
     }));
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    searchExercise(formData);
+    await searchExercise(formData);
+    setFormData(INITIAL_VALUES);
   };
 
   return (

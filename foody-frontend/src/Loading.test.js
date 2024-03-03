@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import NotLogin from "./NotLogin";
+import Loading from "./Loading";
 
 describe("Not Log in test ", () => {
   test(" does not break", () => {
-    render(<NotLogin />);
+    render(<Loading />);
   });
 });

@@ -2,7 +2,7 @@ import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { UserProvider } from "../testUtils.js";
-import ExercisePage from "./ExercicePage.js";
+import SearchByIngrPage from "./SearchByIngrPage.js";
 jest.mock("@auth0/auth0-react");
 
 describe("The Application Component in logged in state", () => {
@@ -31,15 +31,22 @@ describe("The Application Component in logged in state", () => {
     jest.clearAllMocks();
   });
 
-  test("When the app starts it renders  searchbars", () => {
-    render(
+  test("When the app starts it renders a Search By Ingredients Page", () => {
+    const { getByTestId, queryByText, debug } = render(
       <MemoryRouter>
         <UserProvider>
-          <ExercisePage />
+          <SearchByIngrPage />
         </UserProvider>
       </MemoryRouter>,
     );
-    const element = screen.getByText("expert");
-    expect(element).toBeInTheDocument();
+    const btn = queryByText("Submit");
+    const searchbar = getByTestId("items");
+    fireEvent.change(searchbar, {
+      target: { value: "avocado, potato, goat cheesse, eggs" },
+    });
+    fireEvent.click(btn);
+    const addBtn = queryByText("Add");
+
+    waitFor(() => expect(addBtn.toBeInTheDocument()));
   });
 });

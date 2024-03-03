@@ -2,7 +2,7 @@ import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { UserProvider } from "../testUtils.js";
-import ExercisePage from "./ExercicePage.js";
+import SearchByNutrientsPage from "./SearchByNutrientsPage.js";
 jest.mock("@auth0/auth0-react");
 
 describe("The Application Component in logged in state", () => {
@@ -11,6 +11,7 @@ describe("The Application Component in logged in state", () => {
       email: "johndoe@me.com",
       email_verified: true,
       sub: "google-oauth2|12345678901234",
+      name: "testUser",
     };
 
     useAuth0.mockReturnValue({
@@ -31,15 +32,35 @@ describe("The Application Component in logged in state", () => {
     jest.clearAllMocks();
   });
 
-  test("When the app starts it renders  searchbars", () => {
-    render(
+  test("When the app starts it renders a Search By Nutrients Page", () => {
+    const { getByTestId, queryByText, debug } = render(
       <MemoryRouter>
         <UserProvider>
-          <ExercisePage />
+          <SearchByNutrientsPage />
         </UserProvider>
       </MemoryRouter>,
     );
-    const element = screen.getByText("expert");
-    expect(element).toBeInTheDocument();
+    const btn = queryByText("Search");
+    const calories = getByTestId("calories");
+    const carbs = getByTestId("carbs");
+    const protein = getByTestId("protein");
+    const fat = getByTestId("fat");
+    fireEvent.change(calories, {
+      target: { value: 300 },
+    });
+    fireEvent.change(carbs, {
+      target: { value: 30 },
+    });
+    fireEvent.change(protein, {
+      target: { value: 30 },
+    });
+    fireEvent.change(fat, {
+      target: { value: 30 },
+    });
+
+    fireEvent.click(btn);
+    const addBtn = queryByText("Add");
+
+    waitFor(() => expect(addBtn.toBeInTheDocument()));
   });
 });

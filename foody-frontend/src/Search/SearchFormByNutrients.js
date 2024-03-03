@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 
-const SearchForm = ({ searchFor }) => {
+const SearchFormByNutrients = ({ searchFor }) => {
   const INITIAL_VALUE = {
     minCalories: 50,
     maxCalories: 51,
@@ -41,6 +41,7 @@ const SearchForm = ({ searchFor }) => {
           max={800}
           onChange={handleChange}
           value={formData.maxCalories}
+          data-testid="calories"
         />
 
         <span style={{ color: "blue" }}>{formData.maxCalories} </span>
@@ -55,6 +56,7 @@ const SearchForm = ({ searchFor }) => {
           max={100}
           onChange={handleChange}
           value={formData.maxCarbs}
+          data-testid="carbs"
         />
         <span style={{ color: "red" }}> {formData.maxCarbs} </span>
       </div>
@@ -69,6 +71,7 @@ const SearchForm = ({ searchFor }) => {
           max={100}
           onChange={handleChange}
           value={formData.maxProtein}
+          data-testid="protein"
         />
         <span style={{ color: "orange" }}> {formData.maxProtein}</span>
       </div>
@@ -83,6 +86,7 @@ const SearchForm = ({ searchFor }) => {
           onChange={handleChange}
           value={formData.maxFat}
           variant="success"
+          data-testid="fat"
         />
         <span style={{ color: "green" }}> {formData.maxFat}</span>
       </div>
@@ -93,4 +97,4 @@ const SearchForm = ({ searchFor }) => {
   );
 };
 
-export default SearchForm;
+export default SearchFormByNutrients;

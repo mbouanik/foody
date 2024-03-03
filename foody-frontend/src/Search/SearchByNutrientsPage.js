@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import FoodList from "../Food/FoodList";
-import SearchForm from "../Search/SearchForm";
+import SearchFormByNutrients from "./SearchFormByNutrients";
 
-const SearchPage = () => {
+const SearchByNutrientsPage = () => {
   localStorage.setItem("lastVisitedURL", window.location.pathname);
 
   const [foods, setFoods] = useState([]);
@@ -30,9 +30,9 @@ const SearchPage = () => {
   };
   return (
     <>
-      <SearchForm searchFor={search} />
+      <SearchFormByNutrients searchFor={search} />
       <FoodList foods={foods} />
     </>
   );
 };
-export default SearchPage;
+export default SearchByNutrientsPage;

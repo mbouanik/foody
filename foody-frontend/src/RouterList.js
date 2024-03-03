@@ -8,7 +8,7 @@ import ProfileUser from "./ProfileUser";
 import RecipePage from "./Recipe/RecipePage";
 import RecipeProfile from "./Recipe/RecipeProfile";
 import SearchByIngrPage from "./Search/SearchByIngrPage";
-import SearchPage from "./Search/SearchPage";
+import SearchByNutrientsPage from "./Search/SearchByNutrientsPage";
 
 const RouterList = () => {
   return (
@@ -17,7 +17,7 @@ const RouterList = () => {
       <Route element={<PrivateRoutes />}>
         <Route path="/profile/recipes" element={<RecipeProfile />} />
         <Route path="/profile/exercises" element={<ExerciseProfile />} />
-        <Route path="/search/nutrients" element={<SearchPage />} />
+        <Route path="/search/nutrients" element={<SearchByNutrientsPage />} />
         <Route path="/search/ingredients" element={<SearchByIngrPage />} />
         <Route path="/recipes/:id" element={<RecipePage />} />
         <Route path="/exercises" element={<ExercisePage />} />

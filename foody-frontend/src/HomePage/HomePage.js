@@ -57,7 +57,7 @@ const HomePage = () => {
 
   return (
     <>
-      {token ? (
+      {isAuthenticated || token ? (
         <div>
           <FoodList foods={foods} />
         </div>

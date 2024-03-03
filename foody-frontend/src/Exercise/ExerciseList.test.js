@@ -1,8 +1,8 @@
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { UserProvider } from "../testUtils.js";
-import ExercisePage from "./ExercicePage.js";
+import ExerciseList from "./ExerciseList.js";
 jest.mock("@auth0/auth0-react");
 
 describe("The Application Component in logged in state", () => {
@@ -32,14 +32,22 @@ describe("The Application Component in logged in state", () => {
   });
 
   test("When the app starts it renders  searchbars", () => {
+    const exercises = [
+      {
+        nf_calories: 340,
+        name: "row 20 min",
+        met: "3",
+        duration_min: 20,
+      },
+    ];
     render(
       <MemoryRouter>
         <UserProvider>
-          <ExercisePage />
+          <ExerciseList exercises={exercises} />
         </UserProvider>
       </MemoryRouter>,
     );
-    const element = screen.getByText("expert");
+    const element = screen.getByText("row 20 min");
     expect(element).toBeInTheDocument();
   });
 });

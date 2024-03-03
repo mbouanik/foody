@@ -23,7 +23,7 @@ const RecipePage = () => {
       setRecipe(res.data);
     };
     getRecipe();
-  }, []);
+  }, [id]);
   return (
     <div
       style={{
