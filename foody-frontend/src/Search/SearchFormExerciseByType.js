@@ -24,16 +24,12 @@ const SearchFormExerciseByType = ({ searchExercieByType }) => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     await searchExercieByType(formData);
-    console.log(formData);
     evt.target.children[0].value = "Options";
     evt.target.children[2].children[0].checked = false;
     evt.target.children[3].children[0].checked = false;
     evt.target.children[4].children[0].checked = false;
-    console.log(evt.target.children);
     setPlaceholder("");
-
     setFormData(INITIAL_VALUES);
-    // setPlaceholder("");
   };
 
   const handleOptions = (evt) => {
